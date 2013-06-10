@@ -409,19 +409,14 @@ void AprilInterface::imageCallback(const sensor_msgs::ImageConstPtr & msg)
   { //size to perimeter
     mostStableTransform = transform;
     largestObservedPerimeter = dd.observedPerimeter;
+    publishPoseAndTf(transform, msg->header.stamp.toSec(), frameid, dd.observedPerimeter);
+
   }
 }
 
 //	tf::Quaternion quat(tf::Vector3(0,0,1),-45./180.*M_PI);
 //	std::cout<<"quat "<<quat.getX()<<" "<<quat.getY()<<" "<<quat.getZ()<<" "<<quat.getW()<<std::endl;
 
-//only publish if there is valid transform
-  if (largestObservedPerimeter > 0)
-  {
-    std::string frameid = "/april_fix";
-    //publish best
-    publishPoseAndTf(mostStableTransform, msg->header.stamp.toSec(), frameid, largestObservedPerimeter);
-  }
 
   //some debugging tools
 #if TAG_DEBUG_DRAW
