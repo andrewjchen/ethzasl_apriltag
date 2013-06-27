@@ -19,10 +19,6 @@
   <depend package="tf"/>
   <depend package="visualization_msgs"/>
   <depend package="dynamic_reconfigure"/>
-
-  <rosdep name="libopenscenegraph-dev"/>
-  <rosdep name="openscenegraph"/>
-
 </package>
 
 

@@ -28,15 +28,6 @@ ENDIF()
 ########### Find packages ###########
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_SOURCE_DIR}/cmake/)
 FIND_PACKAGE(OpenCV REQUIRED)
-FIND_PACKAGE(OpenSceneGraph 2.0.0 REQUIRED
-	osg
-	osgDB
-	osgGA
-	osgUtil
-	osgText
-	osgViewer
-	OpenThreads
-)
 FIND_PACKAGE(Eigen3 REQUIRED)
 
 #define ESM_LIB, ESM_HEADER
