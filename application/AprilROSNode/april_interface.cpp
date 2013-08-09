@@ -402,16 +402,8 @@ void AprilInterface::imageCallback(const sensor_msgs::ImageConstPtr & msg)
 
   //publish
   std::string frameid = "/tag_"+boost::lexical_cast<std::string>(dd.id);
-  //		publishPoseAndTf(transform, frameid);
+  publishPoseAndTf(transform, msg->header.stamp.toSec(), frameid, dd.observedPerimeter);
 
-  //store best, which we assume to be the pose with the largest appearance in the image
-  if(dd.observedPerimeter>largestObservedPerimeter && dd.observedPerimeter > ParamsAccess::varParams->min_observed_tag_size * 4)
-  { //size to perimeter
-    mostStableTransform = transform;
-    largestObservedPerimeter = dd.observedPerimeter;
-    publishPoseAndTf(transform, msg->header.stamp.toSec(), frameid, dd.observedPerimeter);
-
-  }
 }
 
 //	tf::Quaternion quat(tf::Vector3(0,0,1),-45./180.*M_PI);
