@@ -23,14 +23,18 @@ SET(APP_NAME april_node)
 SET(lib_SRCS
 	${CPP_FILES}
 	${ALL_HEADER_FILES}
+	${catkin_INCLUDE_DIRS}
 )
 
 SET(extLinkerOption 
 	${OpenCV_LIBS}
 	${OPENSCENEGRAPH_LIBRARIES}
+	${catkin_LIBRARIES}
 )
 
-rosbuild_add_executable(${APP_NAME} ${lib_SRCS})
+#rosbuild_add_executable(${APP_NAME} ${lib_SRCS})
+add_executable(${APP_NAME} ${lib_SRCS})
+
 TARGET_LINK_LIBRARIES(${APP_NAME} ${extLinkerOption})
 
 INSTALL(TARGETS ${APP_NAME} DESTINATION bin)
